@@ -21,20 +21,22 @@
  Виклик функції: super_fibonacci(9, 3)
  Повертає: 57
  """
-import sys
-a=int(sys.argv[1]) #индекс
-b=int(sys.argv[2]) #такт
-
-def super_fibonacci(n, m):
-	l=[]
-	while m != 0:
-		l.append(1)
-		m-=1
-	z_list=len(l)-1
-	while len(l) < n:
-		l.append(sum(l[-1-z_list:]))
-	return(l[-1])
-
-print super_fibonacci(a, b)
+def super_fibonacci(n,m):
+    L = []
+    for i in range(m):
+        L.append (1)
+        
+    d = n-m
+    
+    if d<0:
+        d=0
+    
+    for x in range(d):
+        S = 0
+        for y in range(m):
+            S += L[ len(L) - y - 1 ]
+        L.append(S)
+    
+    return L[n-1]
 
 
